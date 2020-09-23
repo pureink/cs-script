@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/badink/cs-script#readme",
   "dependencies": {
-    "cors": "^2.8.5"
+    "cors": "^2.8.5",
+    "sourcequery": "github:mbr-0001/sourcequery"
   }
 }
