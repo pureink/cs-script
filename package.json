@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/badink/cs-script#readme",
   "dependencies": {
+    "@fabricio-191/valve-server-query": "^1.6.0-5",
     "cors": "^2.8.5",
     "sourcequery": "github:mbr-0001/sourcequery"
   }
