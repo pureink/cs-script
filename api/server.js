@@ -15,9 +15,9 @@ module.exports = async (req, res) => {
   const {
     query: { ip },
   } = req
-  const data=[]
+  let data=[]
 		const query=new SourceQuery(ip,27015,5000,true)
-		query.getInfo().then(info=>data.push(info))
-    query.getPlayers().then(players=>data.push(players))
+		query.getInfo().then(info =>data.push(info))
+    query.getPlayers().then(players => data.push(players))
   res.status(200).json(data)
 }
