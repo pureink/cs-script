@@ -1,6 +1,6 @@
 import Cors from 'cors'
 import initMiddleware from './init-middleware'
-const SourceQuery = require('sourcequery');
+const Server = require('@fabricio-191/valve-server-query');
 // Initialize the cors middleware
 const cors = initMiddleware(
   // You can read more about the available options here: https://github.com/expressjs/cors#configuration-options
@@ -15,8 +15,19 @@ module.exports = async (req, res) => {
   const {
     query: { ip },
   } = req
-    const query=new SourceQuery(ip,27015,1000,true)
-    var queryinfo = await query.getInfo();
-    var player =await query.getPlayers()
-  res.status(200).json({queryinfo,player})
+const server = new Server({
+    ip: ip,
+    port: 27015,
+    timeout: 2000
+});
+let info=server.getInfo()
+.then(info=> console.log(info))
+.catch(console.error)
+ 
+let player=server.getPlayers()
+.then(players => {
+  console.log(players)
+})
+.catch(console.error)
+  res.status(200).json({info,player})
 }
