@@ -25,5 +25,5 @@ let info = await server.getInfo().catch(console.error)
 let player = await server.getPlayers().catch(console.error)
 
 
-  res.status(200).json(JSON.stringfy(info))
+  res.status(200).json(JSON.stringify(info))
 }
