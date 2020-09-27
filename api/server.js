@@ -25,5 +25,5 @@ let info = await server.getInfo()
 let player = await server.getPlayers()
 
 
-  res.status(200).json({info,player})
+  res.status(200).json(JSON.stringfy(info),JSON.stringfy(player))
 }
