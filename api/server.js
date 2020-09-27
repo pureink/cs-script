@@ -21,8 +21,8 @@ const server = new Server({
     port: 27015,
     timeout: 2000
 });
-let info = await server.getInfo()
-let player = await server.getPlayers()
+let info = await server.getInfo().catch(console.error)
+let player = await server.getPlayers().catch(console.error)
 
 
   res.status(200).json(JSON.stringfy(info),JSON.stringfy(player))
