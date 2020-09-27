@@ -20,11 +20,11 @@ const server = new Server({
     port: 27015,
     timeout: 2000
 });
-let info=server.getInfo()
+let info=await server.getInfo()
 .then(info=> console.log(info))
 .catch(console.error)
  
-let player=server.getPlayers()
+let player=await server.getPlayers()
 .then(players => {
   console.log(players)
 })
