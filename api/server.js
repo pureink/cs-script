@@ -1,5 +1,10 @@
 import Cors from 'cors'
 import initMiddleware from './init-middleware'
+const SourceQuery = require('sourcequery');
+function utfconvert(string){
+  var buf = Buffer.from(string,'latin1');
+  return buf.toString('utf8')
+}
 // Initialize the cors middleware
 const cors = initMiddleware(
   // You can read more about the available options here: https://github.com/expressjs/cors#configuration-options
@@ -14,16 +19,11 @@ module.exports = async (req, res) => {
   const {
     query: { ip },
   } = req
-
-const Server = require('@fabricio-191/valve-server-query');
-const server = new Server({
-    ip: ip,
-    port: 27015,
-    timeout: 2000
-});
-let info = await server.getInfo().catch(console.error)
-let player = await server.getPlayers().catch(console.error)
-
-
-  res.status(200).json(JSON.stringify(info))
+    const query=new SourceQuery(ip,27015,1000,true)
+    var queryinfo = await query.getInfo();
+    var player =await query.getPlayers()
+    for(let i=0;i<player.length;i++){
+    	player[i].name=utfconvert(player[i].name)
+    }
+  res.status(200).json({queryinfo,player})
 }
