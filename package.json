@@ -19,6 +19,9 @@
   "dependencies": {
     "@fabricio-191/valve-server-query": "^1.6.0-5",
     "cors": "^2.8.5",
-    "sourcequery": "github:mbr-0001/sourcequery"
+    "node-fetch": "^2.6.1",
+    "sourcequery": "github:mbr-0001/sourcequery",
+    "steamapi": "^2.1.2",
+    "steamidconvert": "^0.2.4"
   }
 }
